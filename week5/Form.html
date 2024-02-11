@@ -1,86 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Handler</title>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        document.querySelector("form").onsubmit = function (event) {
-          let username = document.querySelector("#username").value;
-          let password = document.querySelector("#password").value;
-          let checkusername = false;
-          let checkpassword = false;
-
-          // Check username length
-          if (username.length  <8)  {
-            document.querySelector("#errorUsername").innerHTML =
-              "Username must be at least 8 characters long";
-          } else {
-            checkusername = true;
-            document.querySelector("#errorUsername").innerHTML = "";
-          }
-
-          // Check password length
-          if (password.length < 8) {
-            document.querySelector("#errorPassword").innerHTML =
-              "Password must be at least 8 characters long";
-          } else {
-            checkpassword = true;
-            document.querySelector("#errorPassword").innerHTML = "";
-          }
-
-          // Prevent form submission if validation fails
-          if (!(checkusername && checkpassword)) {
-            event.preventDefault(); // Prevent form submission
-          }
-        };
-
-        document.querySelector("#clickme").onclick = function () {
-          document.querySelector("h1").innerHTML = "Good Bye";
-        };
-      });
-    </script>
     <style>
-      .error {
-        color: red;
-      }
-      body {
-        background-color: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        margin-top: 300px;
-}
- button {
-    border-radius: 5px;
-    background-color: rgb(46, 137, 173);
-    font-size: 15px;
-    color: #000;
-}
- input {
-    border-radius: 5px;
-    background-color: rgb(247, 234, 213);
-    font-size: 15px;
-    color: #000;
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
- }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .error {
+            color: red;
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
     </style>
-  </head>
-  <body>
-    <div class="body">
-    <h1>Hello</h1>
-    <button id="clickme " >Click Me</button >
-    <form action="">
-      <p>Username :</p>
-      <input type="text" id="username" />
-      <p id="errorUsername" class="error"></p>
-      <p>Password :</p>
-      <input type="password" id="password" />
-      <p id="errorPassword" class="error"></p> <!-- Fixed duplicate ID -->
-      <input class="" type="submit" value="OK" />
-    </form>
-</div>
-  </body>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello</h1>
+        <button id="clickme">Click Me</button>
+        <form>
+            <p>Username :</p>
+            <input type="text" id="username" />
+            <p id="errorUsername" class="error"></p>
+            <p>Password :</p>
+            <input type="password" id="password" />
+            <p id="errorPassword" class="error"></p>
+            <input type="submit" value="OK" />
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector("form").onsubmit = function (event) {
+                let username = document.querySelector("#username").value;
+                let password = document.querySelector("#password").value;
+                let checkusername = false;
+                let checkpassword = false;
+
+                // Check username length
+                if (username.length < 8) {
+                    document.querySelector("#errorUsername").innerHTML =
+                        "Username must be at least 8 characters long";
+                } else {
+                    checkusername = true;
+                    document.querySelector("#errorUsername").innerHTML = "";
+                }
+
+                // Check password length
+                if (password.length < 8) {
+                    document.querySelector("#errorPassword").innerHTML =
+                        "Password must be at least 8 characters long";
+                } else {
+                    checkpassword = true;
+                    document.querySelector("#errorPassword").innerHTML = "";
+                }
+
+                // Prevent form submission if validation fails
+                if (!(checkusername && checkpassword)) {
+                    event.preventDefault(); // Prevent form submission
+                }
+            };
+
+            document.querySelector("#clickme").onclick = function () {
+                document.querySelector("h1").innerHTML = "Good Bye";
+            };
+        });
+    </script>
+</body>
 </html>
